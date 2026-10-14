@@ -31,7 +31,8 @@ img{display:block;max-width:none}
 .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
 .w{display:inline-block;overflow:hidden;padding:.06em .1em .16em;margin:-.06em -.1em -.16em;vertical-align:top}
 .wi{display:inline-block;transform:translateY(106%);will-change:transform}
-.wide,.hero-copy .h-b,.dh-title,.p-title,.card h3,.o-title,.stk b{font-family:var(--wide);font-stretch:125%;font-variation-settings:"wdth" 125;font-weight:800;text-transform:uppercase}
+.wide,.hero-copy .h-b,.dh-title,.card h3,.o-title,.stk b{font-family:var(--wide);font-stretch:125%;font-variation-settings:"wdth" 125;font-weight:800;text-transform:uppercase}
+.p-title{font-family:var(--script);font-weight:400;text-transform:capitalize;font-size:clamp(2rem,5vw,4.9rem);line-height:.98;letter-spacing:-.015em}
 
 /* ================= INTRO ================= */
 #intro .stage{background:var(--oxblood)}
@@ -141,12 +142,15 @@ img{display:block;max-width:none}
 .c-line{background:transparent;color:#1b0709;box-shadow:inset 0 0 0 2.5px #1b0709}.c-line .sp{fill:var(--scarlet)}
 
 /* Project action button */
-.p-btn{display:inline-flex;align-items:center;gap:.6em;padding:.85em 2.2em;font:700 clamp(.85rem,1.8vw,1rem)/1 var(--wide);text-transform:uppercase;letter-spacing:.06em;color:#fff;background:var(--scarlet);border:none;border-radius:6em;cursor:pointer;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease,background .2s ease;position:relative;z-index:1}
+.p-btn{display:inline-flex;align-items:center;gap:.6em;padding:.85em 2.2em;font:700 clamp(.85rem,1.8vw,1rem)/1 var(--script);text-transform:uppercase;letter-spacing:.06em;color:#fff;background:var(--scarlet);border:none;border-radius:6em;cursor:pointer;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease,background .2s ease;position:relative;z-index:1}
 .p-btn::before{content:"";position:absolute;inset:0;border-radius:6em;background:var(--scarlet);z-index:-1;transition:transform .4s ease,opacity .4s ease;transform:scale(1);opacity:1}
 .p-btn:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(179,18,30,.4)}
 .p-btn:active{transform:translateY(-1px);box-shadow:0 5px 10px rgba(179,18,30,.3)}
 .p-btn:hover::before{transform:scaleX(1.4) scaleY(1.6);opacity:0}
 .p-btn:focus-visible{outline:3px solid var(--cream);outline-offset:3px}
+
+/* Center buttons in project notes */
+.p-note{display:flex;justify-content:center;align-items:center;margin-top:2rem}
 
 /* ================= OUTRO ================= */
 #outro .stage{background:var(--oxblood)}
