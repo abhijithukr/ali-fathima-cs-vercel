@@ -140,6 +140,14 @@ img{display:block;max-width:none}
 .c-paper{background:var(--paper);color:#1b0709}.c-paper .sp{fill:var(--scarlet)}
 .c-line{background:transparent;color:#1b0709;box-shadow:inset 0 0 0 2.5px #1b0709}.c-line .sp{fill:var(--scarlet)}
 
+/* Project action button */
+.p-btn{display:inline-flex;align-items:center;gap:.6em;padding:.85em 2.2em;font:700 clamp(.85rem,1.8vw,1rem)/1 var(--wide);text-transform:uppercase;letter-spacing:.06em;color:#fff;background:var(--scarlet);border:none;border-radius:6em;cursor:pointer;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease,background .2s ease;position:relative;z-index:1}
+.p-btn::before{content:"";position:absolute;inset:0;border-radius:6em;background:var(--scarlet);z-index:-1;transition:transform .4s ease,opacity .4s ease;transform:scale(1);opacity:1}
+.p-btn:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(179,18,30,.4)}
+.p-btn:active{transform:translateY(-1px);box-shadow:0 5px 10px rgba(179,18,30,.3)}
+.p-btn:hover::before{transform:scaleX(1.4) scaleY(1.6);opacity:0}
+.p-btn:focus-visible{outline:3px solid var(--cream);outline-offset:3px}
+
 /* ================= OUTRO ================= */
 #outro .stage{background:var(--oxblood)}
 .o-top{position:absolute;left:0;right:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 6vw}
@@ -397,13 +405,13 @@ const ROLES = [
 
 // "What have we done" pages. Each has up to 4 points (heading + one or two lines).
 const PROJECTS = [
-  {name:'Code Digest', kick:'PROJECT ONE', tag:'A student-led tech newsletter bringing the latest in technology, opportunities, and innovation to the CSE community.', note:'keep scrolling &rarr; <a href="code-digest.html" target="_blank" rel="noopener" style="color:var(--note);text-decoration:underline;font-weight:700">View Code Digest</a>',
+  {name:'Code Digest', kick:'PROJECT ONE', tag:'A student-led tech newsletter bringing the latest in technology, opportunities, and innovation to the CSE community.', note:'<a href="code-digest.html" target="_blank" rel="noopener" class="p-btn">CODE DIGEST</a>',
     points:[
      ['WHAT IT IS','A regular tech digest sharing emerging technologies, AI updates, industry news, internships, and hackathons with CSE students.'],
      ['WHO IT REACHED','CSE students looking to stay informed about the latest tech trends, internship opportunities, hackathons, and upcoming events.'],
      ['OUR PART','Ali was the driving force behind Code Digest, constantly following up with everyone, coordinating contributions, and pushing the team to complete their work. Her dedication and persistence kept every edition moving forward.'],
      ['WHAT CAME OF IT','Behind every successful edition was Ali\'s determination and commitment. Her constant encouragement and follow-ups helped turn the team\'s individual efforts into a shared success, keeping the CSE community informed and engaged.']]},
-  {name:'Initiative Athithi CET', kick:'PROJECT TWO', tag:'A student-driven initiative built to make support, guidance, and opportunities more accessible to the CET community.', note:'there is more &rarr; <a href="https://athithi.sficet.in/" target="_blank" rel="noopener" style="color:var(--note);text-decoration:underline;font-weight:700">View Athithi CET</a>',
+  {name:'Initiative Athithi CET', kick:'PROJECT TWO', tag:'A student-driven initiative built to make support, guidance, and opportunities more accessible to the CET community.', note:'<a href="https://athithi.sficet.in/" target="_blank" rel="noopener" class="p-btn">ATHITHI CET</a>',
     points:[
      ['WHAT IT IS','Athithi CET is an initiative created with the aim of making useful resources and support more accessible to students, bringing people and opportunities together through a shared vision.'],
      ['WHO IT HELPED','Students who needed guidance, access to resources, and support to make the most of the opportunities available to them.'],
