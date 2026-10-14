@@ -95,7 +95,7 @@ img{display:block;max-width:none}
 /* ================= PROJECTS ================= */
 .proj .stage{--pad:clamp(1.2rem,4.5vw,4.5rem);background:var(--bg);color:var(--fg);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.2rem,4vw,4.5rem);align-items:center;padding:var(--pad);padding-top:max(var(--pad),env(safe-area-inset-top,0px))}
 @media (max-width:900px){
-  .proj .stage{grid-template-columns:1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start}
+  .proj .stage{grid-template-columns:1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start;min-height:auto}
   .p-title{font-size:clamp(2rem,6vw,4rem)}
   .p-tag{max-width:none}
   .p-note{font-size:clamp(1.5rem,3.5vw,2.2rem);opacity:1;transform:none}
@@ -103,6 +103,17 @@ img{display:block;max-width:none}
   .card,.card:nth-child(even){margin-top:0;min-height:auto;flex-direction:column;padding:clamp(14px,2vw,24px)}
   .card h3{font-size:clamp(.95rem,1.8vw,1.3rem)}
   .card p{font-size:clamp(.85rem,1.3vw,1rem)}
+}
+@media (max-width:640px){
+  .proj .stage{--pad:clamp(1rem,5vw,2rem);padding-bottom:clamp(2rem,8vh,4rem)}
+  .p-kick{font-size:clamp(1.8rem,7vw,2.8rem)}
+  .p-title{font-size:clamp(1.8rem,8vw,3rem)}
+  .p-tag{font-size:clamp(.9rem,3.5vw,1.1rem)}
+  .p-note{font-size:clamp(1.3rem,4vw,1.8rem)}
+  .card{padding:clamp(12px,3vw,18px);border-radius:14px}
+  .card h3{font-size:clamp(.9rem,3vw,1.1rem)}
+  .card p{font-size:clamp(.85rem,3.2vw,1rem);line-height:1.5}
+  .card svg.sp{width:20px;height:20px}
 }
 
 .theme-paper{--bg:var(--paper);--fg:#1b0709;--note:var(--scarlet)}
@@ -456,7 +467,8 @@ const projScenes=[];
 PROJECTS.forEach((pr,i)=>{
   const th=themes[i%themes.length];
   const sec=document.createElement('section');
-  sec.className='track proj theme-'+th; sec.dataset.vh='400';
+  const isMobile=window.innerWidth<640;
+  sec.className='track proj theme-'+th; sec.dataset.vh=isMobile?'700':'400';
   const words=pr.name.split(' ').map(w=>`<span class="w"><span class="wi">${w}</span></span>`).join(' ');
   const cards=pr.points.map((pt,k)=>`<article class="card ${variants[th][k%4]}"><div class="ct"><h3>${pt[0]}</h3><p>${pt[1]}</p></div>${spark}</article>`).join('');
   sec.innerHTML=`<div class="stage"><div class="p-left"><span class="p-kick">${pr.kick||''}</span><h2 class="p-title">${words}</h2><p class="p-tag">${pr.tag}</p><p class="p-note">${pr.note||''}</p></div><div class="cards">${cards}</div></div>`;
@@ -1133,7 +1145,10 @@ function frame(now){
 const kick=()=>{if(!raf) raf=requestAnimationFrame(frame)};
 addEventListener('scroll',kick,{passive:true});
 let rz=0;
-addEventListener('resize',()=>{cancelAnimationFrame(rz);rz=requestAnimationFrame(()=>{layoutAll();tracks.forEach(t=>t.first=true);kick()})});
+addEventListener('resize',()=>{cancelAnimationFrame(rz);rz=requestAnimationFrame(()=>{
+    const isMobile=window.innerWidth<640;
+    document.querySelectorAll('.proj').forEach(sec=>{sec.dataset.vh=isMobile?'700':'400'});
+    layoutAll();tracks.forEach(t=>t.first=true);kick()})});
 if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>{layoutAll();tracks.forEach(t=>t.first=true);kick()});
 
 layoutAll(); kick();
